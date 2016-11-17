@@ -22,5 +22,5 @@ imagecopy(
 );
 
 
-imagepng($image, __DIR__.'/results/'.$argv[2]);
+imagepng($image, __DIR__.'/results/'.basename($argv[2]));
 imagedestroy($image);
