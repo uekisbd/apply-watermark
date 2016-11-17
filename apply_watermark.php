@@ -3,23 +3,17 @@
 $image = imagecreatefromjpeg($argv[2]);
 
 
-$addWatermark = function($image, $stampPath) {
-    $stamp = imagecreatefrompng($stampPath);
-    $marge_right = 10;
-    $marge_bottom = 10;
-
-    $sx = imagesx($stamp);
-    $sy = imagesy($stamp);
-
-    imagecopy(
+$addWatermark = function($image, $text, $fontSize = 14) {
+    $color = imagecolorallocate($image, 0,0,0);
+    imagettftext (
         $image,
-        $stamp,
-        imagesx($image) - $sx - $marge_right,
-        imagesy($image) - $sy - $marge_bottom,
+        $fontSize,
         0,
-        0,
-        imagesx($stamp),
-        imagesy($stamp)
+        imagesx($image) - 150,
+        imagesy($image) - 20,
+        $color,
+        'arial.ttf',
+        $text
     );
 };
 
